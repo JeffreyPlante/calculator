@@ -50,14 +50,23 @@ table {
 /******************************************************************************/
 /* END RESET                                                                  */
 /******************************************************************************/
+@font-face {
+    font-family: 'bpdotsunicasesquareregular';
+    src: url('./assets/fonts/BPdotsUnicaseSquare-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 * {
-  color: #82071e
 }
 
 html, body{
 	height: 100%;
 	margin: 0;
+}
+.dots {
+    font-family: 'bpdotsunicasesquareregular', serif;
 }
 
 .main{
@@ -100,8 +109,7 @@ html, body{
 
 .output{
 	margin: 0 10px 10px 0;
-	font-weight:700;
-	font-size:xx-large;
+	font-size:50px;
 	color: #161517;
 }
 
@@ -132,21 +140,23 @@ html, body{
 	box-sizing: border-box;
 	border-radius: 10%;
 	text-align: center;
-	background-color: #cac7d6;
-	color: #161517;
+	background-color: #31363b;
+	color: #f3f1ed;
+	font-family: Verdana, sans-serif;
 }
 
 .func-buttons .button {
 	height: 60px;
 	line-height: 60px;
 	width: 150px;
-	font-weight:700;
+	/* font-weight:700; */
 	font-size:large;
 }
+
 .nums-ops .button {
 	height: 85px;
 	line-height: 85px;
 	width: 85px;
-	font-weight:700;
+	/* font-weight:700; */
 	font-size:x-large;
 }
