@@ -76,10 +76,11 @@ html, body{
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+	border-radius: 10px;
 }
 
 .screen{
-	background-color: #16a085;
+	background-color: #2854a6;
 	height: 20%;
 	display: flex;
 	justify-content: center;
@@ -88,7 +89,7 @@ html, body{
 
 .display {
 	display: inline-block;
-	background-color: #8e44ad;
+	background-color: #7f8c8d;
 	height: 90px;
 	border-radius: 10px;
 	width: 92%;
@@ -101,10 +102,11 @@ html, body{
 	margin: 0 10px 10px 0;
 	font-weight:700;
 	font-size:xx-large;
+	color: #161517;
 }
 
 .buttons{
-	background-color: #16a085;
+	background-color: #2854a6;
 	height: 80%;
 }
 
@@ -126,10 +128,12 @@ html, body{
 
 .button {
 	display: inline-block;
-	border: 2px solid #3daee9;
+	border: 2px solid #7f8c8d;
 	box-sizing: border-box;
 	border-radius: 10%;
 	text-align: center;
+	background-color: #cac7d6;
+	color: #161517;
 }
 
 .func-buttons .button {
@@ -140,8 +144,8 @@ html, body{
 	font-size:large;
 }
 .nums-ops .button {
-	height: 75px;
-	line-height: 75px;
+	height: 85px;
+	line-height: 85px;
 	width: 85px;
 	font-weight:700;
 	font-size:x-large;
