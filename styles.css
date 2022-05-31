@@ -67,6 +67,7 @@ html, body{
 }
 .dots {
     font-family: 'bpdotsunicasesquareregular', serif;
+	display: inline-block;
 }
 
 .main{
