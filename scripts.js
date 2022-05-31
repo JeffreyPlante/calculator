@@ -1,4 +1,5 @@
 const display = document.querySelector('.output')
+	  stored = document.querySelector('.stored')
 	  clearBtn = document.querySelector('.func-buttons').children[0],
 	  deleteBtn = document.querySelector('.func-buttons').children[1],
 	  numsBtns = document.querySelectorAll('.nums-ops .number'),
@@ -22,7 +23,7 @@ numsBtns.forEach((button) =>{
 
 });
 
-// const updateDisplay = (num) => display.textContent = num.toString();
+const updateDisplay = (num) => display.textContent = num.toString();
 
 function add(x,y){
 	return x + y;
