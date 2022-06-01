@@ -10,7 +10,8 @@ const display = document.querySelector('.output')
 	  decimalBtn = document.querySelector('.button.decimal'),
 	  equalsBtn = document.querySelector('.button.equals'),
 	  addBtn = document.querySelector('.button.add');
-	  
+	  operands = [addBtn, subtractBtn, multiplyBtn, divideBtn]
+
 numsBtns.forEach((button) =>{
 		button.addEventListener('click', () => {
 			value = button.textContent.toString();
@@ -22,6 +23,14 @@ numsBtns.forEach((button) =>{
 			}
 		});
 
+});
+
+operands.forEach((button) =>{
+	button.addEventListener('click', () => {
+		storedValue.textContent = display.textContent;
+		display.textContent = '0';
+		storedOperand.textContent = button.textContent;
+	});
 });
 
 decimalBtn.addEventListener('click', () => {
