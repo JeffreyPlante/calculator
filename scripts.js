@@ -1,5 +1,6 @@
 const display = document.querySelector('.output')
-	  stored = document.querySelector('.stored')
+	  storedValue = document.querySelector('.stored-val')
+	  storedOperand= document.querySelector('.stored-op')
 	  clearBtn = document.querySelector('.func-buttons').children[0],
 	  deleteBtn = document.querySelector('.func-buttons').children[1],
 	  numsBtns = document.querySelectorAll('.nums-ops .number'),
@@ -9,7 +10,7 @@ const display = document.querySelector('.output')
 	  decimalBtn = document.querySelector('.button.decimal'),
 	  equalsBtn = document.querySelector('.button.equals'),
 	  addBtn = document.querySelector('.button.add');
-	
+	  
 numsBtns.forEach((button) =>{
 		button.addEventListener('click', () => {
 			value = button.textContent.toString();
@@ -23,7 +24,28 @@ numsBtns.forEach((button) =>{
 
 });
 
+decimalBtn.addEventListener('click', () => {
+	if(!display.textContent.includes('.')) { display.textContent += '.'};
+});
+
+clearBtn.addEventListener('click', () => {
+	display.textContent = '0';
+	storedValue.textContent = '';
+	storedOperand.textContent = '';
+});
+
+deleteBtn.addEventListener('click', () => {
+	if (display.textContent.length > 1){ 
+		display.textContent = display.textContent.slice(0,-1);
+	} else {
+		display.textContent = '0';
+	}
+});
+
 const updateDisplay = (num) => display.textContent = num.toString();
+const updateStoredValue = (num) => storedValue.textContent = num.toString();
+const updateStoredOperand = (str) => storedOperand.textContent = str;
+
 
 function add(x,y){
 	return x + y;
