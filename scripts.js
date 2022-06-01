@@ -12,6 +12,10 @@ const display = document.querySelector('.output')
 	  addBtn = document.querySelector('.button.add');
 	  operands = [addBtn, subtractBtn, multiplyBtn, divideBtn]
 
+const updateDisplay = (num) => display.textContent = num.toString(),
+	  updateStoredValue = (num) => storedValue.textContent = num.toString(),
+	  updateStoredOperand = (str) => storedOperand.textContent = str;
+
 numsBtns.forEach((button) =>{
 		button.addEventListener('click', () => {
 			value = button.textContent.toString();
@@ -27,9 +31,11 @@ numsBtns.forEach((button) =>{
 
 operands.forEach((button) =>{
 	button.addEventListener('click', () => {
-		storedValue.textContent = display.textContent;
-		display.textContent = '0';
-		storedOperand.textContent = button.textContent;
+		if (storedOperand.textContent === ""){
+			storedValue.textContent = display.textContent;
+			display.textContent = '0';
+			storedOperand.textContent = button.textContent;
+		}
 	});
 });
 
@@ -51,9 +57,6 @@ deleteBtn.addEventListener('click', () => {
 	}
 });
 
-const updateDisplay = (num) => display.textContent = num.toString();
-const updateStoredValue = (num) => storedValue.textContent = num.toString();
-const updateStoredOperand = (str) => storedOperand.textContent = str;
 
 
 function add(x,y){
