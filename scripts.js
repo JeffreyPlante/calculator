@@ -12,9 +12,18 @@ const display = document.querySelector('.output')
 	  addBtn = document.querySelector('.button.add');
 	  operands = [addBtn, subtractBtn, multiplyBtn, divideBtn]
 
-const updateDisplay = (num) => display.textContent = num.toString(),
-	  updateStoredValue = (num) => storedValue.textContent = num.toString(),
-	  updateStoredOperand = (str) => storedOperand.textContent = str;
+const updateStoredValue = (num) => storedValue.textContent = num.toString(),
+	  updateStoredOperand = (str) => storedOperand.textContent = str,
+	  updateDisplay = (num) => {
+		  display.textContent = num.toString()
+		  storedValue.textContent = '';
+		  storedOperand.textContent = '';
+	  },
+	  errorDivideByZero = () => {
+	      let val = display.textContent;
+		  display.textContent = "xxDBZEROxx";
+		  setTimeout(() =>{display.textContent = val}, 1500)
+	  };
 
 numsBtns.forEach((button) =>{
 		button.addEventListener('click', () => {
@@ -57,7 +66,31 @@ deleteBtn.addEventListener('click', () => {
 	}
 });
 
+equalsBtn.addEventListener('click', () => {
+	if (display.textContent === 0 && storedOperand === "/"){
+		errorDivideByZero();	
+	} else if (storedOperand !== "") {
+		let x = parseFloat(storedValue.textContent);
+		let y = parseFloat(display.textContent);
+		let op = storedOperand.textContent;
+		
+		switch(op) {
+			case "+":
+				updateDisplay(add(x,y));
+				break;
+			case "-":
+				updateDisplay(subtract(x,y));
+				break;
+			case "*":
+				updateDisplay(multiply(x,y));
+				break;
+			case "/":
+				updateDisplay(divide(x,y));
+				break;
+		}
+	}
 
+});
 
 function add(x,y){
 	return x + y;
