@@ -78,13 +78,13 @@ equalsBtn.addEventListener('click', () => {
 			case "+":
 				updateDisplay(add(x,y));
 				break;
-			case "-":
+			case "−":
 				updateDisplay(subtract(x,y));
 				break;
-			case "*":
+			case "×":
 				updateDisplay(multiply(x,y));
 				break;
-			case "/":
+			case "÷":
 				updateDisplay(divide(x,y));
 				break;
 		}
