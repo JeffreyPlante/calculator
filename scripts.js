@@ -1,8 +1,8 @@
 const display = document.querySelector('.output')
 	  storedValue = document.querySelector('.stored-val')
 	  storedOperand= document.querySelector('.stored-op')
-	  clearBtn = document.querySelector('.func-buttons').children[0],
-	  deleteBtn = document.querySelector('.func-buttons').children[1],
+	  clearBtn = document.querySelector('.func-container').children[0],
+	  deleteBtn = document.querySelector('.func-container').children[1],
 	  numsBtns = document.querySelectorAll('.nums-ops .number'),
 	  divideBtn = document.querySelector('.button.divide'),
 	  multiplyBtn = document.querySelector('.button.multiply'),
@@ -15,13 +15,17 @@ const display = document.querySelector('.output')
 const updateStoredValue = (num) => storedValue.textContent = num.toString(),
 	  updateStoredOperand = (str) => storedOperand.textContent = str,
 	  updateDisplay = (num) => {
-		  display.textContent = num.toString()
+		  if (num % 1 === 0) {
+		  	display.textContent = num.toString();
+		  } else {
+		  	display.textContent = num.toFixed(2);
+		  }
 		  storedValue.textContent = '';
 		  storedOperand.textContent = '';
 	  },
 	  errorDivideByZero = () => {
 	      let val = display.textContent;
-		  display.textContent = "xxDBZEROxx";
+		  display.textContent = "xx--DBZERO--xx";
 		  setTimeout(() =>{display.textContent = val}, 1500)
 	  };
 
@@ -67,7 +71,7 @@ deleteBtn.addEventListener('click', () => {
 });
 
 equalsBtn.addEventListener('click', () => {
-	if (display.textContent === 0 && storedOperand === "/"){
+	if (display.textContent === "0" && storedOperand.textContent === "÷"){
 		errorDivideByZero();	
 	} else if (storedOperand !== "") {
 		let x = parseFloat(storedValue.textContent);
