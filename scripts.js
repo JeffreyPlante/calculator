@@ -15,14 +15,14 @@ const display = document.querySelector('.output')
 const updateStoredValue = (num) => storedValue.textContent = num.toString(),
 	  updateStoredOperand = (str) => storedOperand.textContent = str,
 	  updateDisplay = (num) => {
-		  if (num % 1 === 0) {
+		  if (num % 1 === 0 && num.toString().length > 12) {
+			display.textContent = num.toExponential(6);
+		  } else if (num % 1 === 0 && num.toString().length <= 12) {
 		  	display.textContent = num.toString();
+		  } else if (num % 1 !== 0 && num.toFixed(2).length > 12){
+			display.textContent = num.toExponential(6);
 		  } else {
-			if(num.toString().length > 12){
-				display.textContent = num.toExponential(5);
-			} else {
-		  		display.textContent = num.toFixed(2);
-			}
+		  	display.textContent = num.toFixed(2);
 		  }
 		  storedValue.textContent = '';
 		  storedOperand.textContent = '';
