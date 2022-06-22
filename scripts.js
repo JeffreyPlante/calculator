@@ -39,7 +39,7 @@ numsBtns.forEach((button) =>{
 
 			if (display.textContent === "0"){
 				display.textContent = value;
-			} else {
+			} else if (display.textContent.length < 12) {
 				display.textContent += value;
 			}
 		});
