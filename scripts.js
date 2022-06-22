@@ -18,7 +18,11 @@ const updateStoredValue = (num) => storedValue.textContent = num.toString(),
 		  if (num % 1 === 0) {
 		  	display.textContent = num.toString();
 		  } else {
-		  	display.textContent = num.toFixed(2);
+			if(num.toString().length > 12){
+				display.textContent = num.toExponential(5);
+			} else {
+		  		display.textContent = num.toFixed(2);
+			}
 		  }
 		  storedValue.textContent = '';
 		  storedOperand.textContent = '';
