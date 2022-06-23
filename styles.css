@@ -211,4 +211,8 @@ html, body{
   .output {
   	font-size: 11.5vw; 
   }
+
+  .calculator{
+	max-height: none;	
+   }
 }
