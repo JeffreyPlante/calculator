@@ -81,9 +81,6 @@ html, body{
 }
 
 .calculator{
-	/* width: 50%; */
-	/* height: 78%; */
-	/* margin: auto; */
 	display: flex;
 	flex-direction: column;
 	border-radius: 10px;
@@ -191,15 +188,11 @@ html, body{
 }
 
 .func-buttons .button {
-	/* height: 60px; */
-	/* line-height: 60px; */
-	/* width: 150px; */
 	font-size: 24px;
 	flex-grow: .46;
 }
 
 .nums-ops .button {
-	/* line-height: 85px; */
 	font-size: 38px;
 }
 
