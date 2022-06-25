@@ -68,7 +68,7 @@ html, body{
 .dots {
     font-family: 'bpdotsunicasesquareregular', serif;
 	display: inline-block;
-	color: #161517;
+	color: #f8f8ff;
 }
 
 .main{
@@ -85,7 +85,7 @@ html, body{
 	flex-direction: column;
 	border-radius: 10px;
 	box-sizing: border-box;
-	background-color: #2d4166;
+	background-color: #300101;
 	box-shadow: -2px 4px 3px 0 #111;
 	width: 100%;
 	max-width: 450px;
@@ -104,7 +104,7 @@ html, body{
 
 .display {
 	display: inline-block;
-	background-color: #839095;
+	background-color: #000004;
 	border-radius: 10px;
 	width: 92%;
 	height: 68%;
