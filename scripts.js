@@ -12,25 +12,41 @@ const display = document.querySelector('.output')
 	  addBtn = document.querySelector('.button.add');
 	  operands = [addBtn, subtractBtn, multiplyBtn, divideBtn]
 
-const updateStoredValue = (num) => storedValue.textContent = num.toString(),
-	  updateStoredOperand = (str) => storedOperand.textContent = str,
-	  updateDisplay = (num) => {
+const formatNum = (num) => {
 		  if (num % 1 === 0 && num.toString().length > 12) {
-			display.textContent = num.toExponential(6);
+			return num.toExponential(6);
 		  } else if (num % 1 === 0 && num.toString().length <= 12) {
-		  	display.textContent = num.toString();
+		  	return num.toString();
 		  } else if (num % 1 !== 0 && num.toFixed(2).length > 12){
-			display.textContent = num.toExponential(6);
+			return num.toExponential(6);
 		  } else {
-		  	display.textContent = num.toFixed(2);
+		  	return num.toFixed(2);
 		  }
-		  storedValue.textContent = '';
-		  storedOperand.textContent = '';
 	  },
 	  errorDivideByZero = () => {
 	      let val = display.textContent;
-		  display.textContent = "xx--DBZERO--xx";
+		  display.textContent = "xx-DBZERO-xx";
 		  setTimeout(() =>{display.textContent = val}, 1500)
+	  },
+	  calculate = ()=> {
+		let x = parseFloat(storedValue.textContent);
+		let y = parseFloat(display.textContent);
+		let op = storedOperand.textContent;
+		
+		switch(op) {
+			case "+":
+				return formatNum(add(x,y));
+				break;
+			case "−":
+				return formatNum(subtract(x,y));
+				break;
+			case "×":
+				return formatNum(multiply(x,y));
+				break;
+			case "÷":
+				return formatNum(divide(x,y));
+				break;
+		}
 	  };
 
 numsBtns.forEach((button) =>{
@@ -50,6 +66,10 @@ operands.forEach((button) =>{
 	button.addEventListener('click', () => {
 		if (storedOperand.textContent === ""){
 			storedValue.textContent = display.textContent;
+			display.textContent = '0';
+			storedOperand.textContent = button.textContent;
+		} else {
+			storedValue.textContent = calculate();
 			display.textContent = '0';
 			storedOperand.textContent = button.textContent;
 		}
@@ -78,24 +98,9 @@ equalsBtn.addEventListener('click', () => {
 	if (display.textContent === "0" && storedOperand.textContent === "÷"){
 		errorDivideByZero();	
 	} else if (storedOperand !== "") {
-		let x = parseFloat(storedValue.textContent);
-		let y = parseFloat(display.textContent);
-		let op = storedOperand.textContent;
-		
-		switch(op) {
-			case "+":
-				updateDisplay(add(x,y));
-				break;
-			case "−":
-				updateDisplay(subtract(x,y));
-				break;
-			case "×":
-				updateDisplay(multiply(x,y));
-				break;
-			case "÷":
-				updateDisplay(divide(x,y));
-				break;
-		}
+		display.textContent = calculate();
+		storedOperand.textContent = '';
+		storedValue.textContent = '';
 	}
 
 });
