@@ -97,7 +97,7 @@ deleteBtn.addEventListener('click', () => {
 equalsBtn.addEventListener('click', () => {
 	if (display.textContent === "0" && storedOperand.textContent === "÷"){
 		errorDivideByZero();	
-	} else if (storedOperand !== "") {
+	} else if (storedOperand.textContent !== "") {
 		display.textContent = calculate();
 		storedOperand.textContent = '';
 		storedValue.textContent = '';
