@@ -122,9 +122,9 @@ window.addEventListener('keydown', (e) => {
 	if (e.key === '.') { inputDecimal() }
 	else if (e.key === 'c' || e.key === "Delete") { inputClear() }
 	else if (e.key === 'd' || e.key === "Backspace") { inputDelete() }
-	else if (e.key === 'e' || e.key === "=") { inputEquals() }
+	else if (e.key === 'e' || e.key === "=" || e.key === "Enter") { inputEquals() }
 	else if (e.key >= 0 && e.key <= 9) { inputNum(e.key) }
-	else if (['/', 'x', '-', '+'].includes(e.key)) { inputOperand(opTranslateHash[e.key]) };
+	else if (['/', 'x', '-', '+'].includes(e.key)) { inputOperand(opTranslateHash[e.key]) }
 });
 
 function add(x,y){
