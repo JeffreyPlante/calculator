@@ -66,6 +66,9 @@ const formatNum = (num) => {
 			storedOperand.textContent = op;
 		}
 	  	
+	  },
+	  inputDecimal = () => {
+		  if(!display.textContent.includes('.')) { display.textContent += '.'};
 	  };
 
 numsBtns.forEach((button) =>{
@@ -84,9 +87,7 @@ operands.forEach((button) =>{
 	});
 });
 
-decimalBtn.addEventListener('click', () => {
-	if(!display.textContent.includes('.')) { display.textContent += '.'};
-});
+decimalBtn.addEventListener('click', () => inputDecimal());
 
 clearBtn.addEventListener('click', () => {
 	display.textContent = '0';
@@ -116,7 +117,8 @@ equalsBtn.addEventListener('click', () => {
 const opTranslateHash = {'/':'÷','x':'×','-':'−','+':'+'};
 
 window.addEventListener('keydown', (e) => {
-	if (e.key >= 0 && e.key <= 9) { inputNum(e.key) }
+	if (e.key === '.') { inputDecimal() }
+	else if (e.key >= 0 && e.key <= 9) { inputNum(e.key) }
 	else if (['/', 'x', '-', '+'].includes(e.key)) { inputOperand(opTranslateHash[e.key]) };
 });
 
