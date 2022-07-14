@@ -81,6 +81,15 @@ const formatNum = (num) => {
 		} else {
 			display.textContent = '0';
 		}
+	  },
+	  inputEquals = () => {
+		if (display.textContent === "0" && storedOperand.textContent === "÷"){
+			errorDivideByZero();	
+		} else if (storedOperand.textContent !== "") {
+			display.textContent = calculate();
+			storedOperand.textContent = '';
+			storedValue.textContent = '';
+		}
 	  };
 	
 numsBtns.forEach((button) =>{
@@ -105,22 +114,15 @@ clearBtn.addEventListener('click', () => inputClear());
 
 deleteBtn.addEventListener('click', () => inputDelete());
 
-equalsBtn.addEventListener('click', () => {
-	if (display.textContent === "0" && storedOperand.textContent === "÷"){
-		errorDivideByZero();	
-	} else if (storedOperand.textContent !== "") {
-		display.textContent = calculate();
-		storedOperand.textContent = '';
-		storedValue.textContent = '';
-	}
-
-});
+equalsBtn.addEventListener('click', () => inputEquals());
 
 const opTranslateHash = {'/':'÷','x':'×','-':'−','+':'+'};
 
 window.addEventListener('keydown', (e) => {
 	if (e.key === '.') { inputDecimal() }
 	else if (e.key === 'c' || e.key === "Delete") { inputClear() }
+	else if (e.key === 'd' || e.key === "Backspace") { inputDelete() }
+	else if (e.key === 'e' || e.key === "=") { inputEquals() }
 	else if (e.key >= 0 && e.key <= 9) { inputNum(e.key) }
 	else if (['/', 'x', '-', '+'].includes(e.key)) { inputOperand(opTranslateHash[e.key]) };
 });
