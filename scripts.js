@@ -48,12 +48,24 @@ const formatNum = (num) => {
 				break;
 		}
 	  },
-	  inputNum = (num)=> {
+	  inputNum = (num) => {
 		if (display.textContent === "0"){
 			display.textContent = num;
 		} else if (display.textContent.length < 12) {
 			display.textContent += num;
 		}
+	  },
+	  inputOperand = (op) => {
+		if (storedOperand.textContent === ""){
+			storedValue.textContent = display.textContent;
+			display.textContent = '0';
+			storedOperand.textContent = op;
+		} else {
+			storedValue.textContent = calculate();
+			display.textContent = '0';
+			storedOperand.textContent = op;
+		}
+	  	
 	  };
 
 numsBtns.forEach((button) =>{
@@ -66,15 +78,9 @@ numsBtns.forEach((button) =>{
 
 operands.forEach((button) =>{
 	button.addEventListener('click', () => {
-		if (storedoperand.textcontent === ""){
-			storedvalue.textContent = display.textContent;
-			display.textContent = '0';
-			storedOperand.textContent = button.textContent;
-		} else {
-			storedValue.textContent = calculate();
-			display.textContent = '0';
-			storedOperand.textContent = button.textContent;
-		}
+		op = button.textContent
+		inputOperand(op);
+
 	});
 });
 
@@ -107,8 +113,11 @@ equalsBtn.addEventListener('click', () => {
 
 });
 
+const opTranslateHash = {'/':'÷','x':'×','-':'−','+':'+'};
+
 window.addEventListener('keydown', (e) => {
-	if (e.key >= 0 && e.key <= 9) { inputNum(e.key) };
+	if (e.key >= 0 && e.key <= 9) { inputNum(e.key) }
+	else if (['/', 'x', '-', '+'].includes(e.key)) { inputOperand(opTranslateHash[e.key]) };
 });
 
 function add(x,y){
