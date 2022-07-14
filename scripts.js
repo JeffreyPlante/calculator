@@ -74,6 +74,13 @@ const formatNum = (num) => {
 		display.textContent = '0';
 		storedValue.textContent = '';
 		storedOperand.textContent = '';
+	  },
+	  inputDelete = () => {
+		if (display.textContent.length > 1){ 
+			display.textContent = display.textContent.slice(0,-1);
+		} else {
+			display.textContent = '0';
+		}
 	  };
 	
 numsBtns.forEach((button) =>{
@@ -96,13 +103,7 @@ decimalBtn.addEventListener('click', () => inputDecimal());
 
 clearBtn.addEventListener('click', () => inputClear());
 
-deleteBtn.addEventListener('click', () => {
-	if (display.textContent.length > 1){ 
-		display.textContent = display.textContent.slice(0,-1);
-	} else {
-		display.textContent = '0';
-	}
-});
+deleteBtn.addEventListener('click', () => inputDelete());
 
 equalsBtn.addEventListener('click', () => {
 	if (display.textContent === "0" && storedOperand.textContent === "÷"){
@@ -119,7 +120,7 @@ const opTranslateHash = {'/':'÷','x':'×','-':'−','+':'+'};
 
 window.addEventListener('keydown', (e) => {
 	if (e.key === '.') { inputDecimal() }
-	if (e.key === 'c') { inputClear() }
+	else if (e.key === 'c' || e.key === "Delete") { inputClear() }
 	else if (e.key >= 0 && e.key <= 9) { inputNum(e.key) }
 	else if (['/', 'x', '-', '+'].includes(e.key)) { inputOperand(opTranslateHash[e.key]) };
 });
