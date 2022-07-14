@@ -47,25 +47,27 @@ const formatNum = (num) => {
 				return formatNum(divide(x,y));
 				break;
 		}
+	  },
+	  inputNum = (num)=> {
+		if (display.textContent === "0"){
+			display.textContent = num;
+		} else if (display.textContent.length < 12) {
+			display.textContent += num;
+		}
 	  };
 
 numsBtns.forEach((button) =>{
 		button.addEventListener('click', () => {
-			value = button.textContent.toString();
-
-			if (display.textContent === "0"){
-				display.textContent = value;
-			} else if (display.textContent.length < 12) {
-				display.textContent += value;
-			}
+			num = button.textContent.toString();
+			inputNum(num);
 		});
 
 });
 
 operands.forEach((button) =>{
 	button.addEventListener('click', () => {
-		if (storedOperand.textContent === ""){
-			storedValue.textContent = display.textContent;
+		if (storedoperand.textcontent === ""){
+			storedvalue.textContent = display.textContent;
 			display.textContent = '0';
 			storedOperand.textContent = button.textContent;
 		} else {
@@ -103,6 +105,10 @@ equalsBtn.addEventListener('click', () => {
 		storedValue.textContent = '';
 	}
 
+});
+
+window.addEventListener('keydown', (e) => {
+	if (e.key >= 0 && e.key <= 9) { inputNum(e.key) };
 });
 
 function add(x,y){
