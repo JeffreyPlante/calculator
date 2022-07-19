@@ -85,7 +85,7 @@ html, body{
 	flex-direction: column;
 	border-radius: 10px;
 	box-sizing: border-box;
-	background-color: #0c4b79;
+	background-color: #323e48;
 	box-shadow: -2px 4px 3px 0 #111;
 	width: 100%;
 	max-width: 450px;
@@ -104,7 +104,7 @@ html, body{
 
 .display {
 	display: inline-block;
-	background-color: #000004;
+	background-color: #191919;
 	border-radius: 10px;
 	width: 92%;
 	height: 68%;
@@ -164,7 +164,7 @@ html, body{
 	box-sizing: border-box;
 	border-radius: 10%;
 	text-align: center;
-	background-color: #31363b;
+	background-color: #252b31;
 	color: #e2eced;
 	font-family: Verdana, sans-serif;
 	box-shadow: -2px 4px 3px 0 #111;
